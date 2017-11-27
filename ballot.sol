@@ -1,4 +1,4 @@
-//beginning of smart contract for interview question exchange
+//smart contract example for reference
 pragma solidity ^0.4.0;
 contract Ballot {
 
