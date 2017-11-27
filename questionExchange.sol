@@ -31,7 +31,7 @@ contract questionExchange {
     event InterviewAppointmentSet(address from, DateTime date, string company);
 
     //connects to pricing sol Library
-    function priceAdjustment(){};
+    function priceAdjustment(){}
 
     //implements token
     address public minter;
