@@ -60,15 +60,17 @@ contract questionExchange {
         send(curr.owner, curr.price);
     }
 
-    //implement function to buy tokens to buy questions
-    function acquireToken(){}
+    //implement function to buy tokens to buy questions func
+
 
     function addQuestion(address owner, uint ask, string company, difficulty diff){
     questionBase.push(interviewQuestion(owner,ask,company, block.timestamp(), diff, 0));
 }
 
-
+    //TODO:
     //need to implement lazy payment structure
+    //develop search for questions
+    //takeAways: should store questions off-chain, use smart contract as controller for payment; can use encryption
 
 
 }
