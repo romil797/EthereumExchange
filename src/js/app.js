@@ -3,17 +3,17 @@ App = {
   contracts: {},
 
   init: function() {
-    // Load pets.
+    // Load questions from JSON.
     $.getJSON('../questions.json', function(data) {
-      var petsRow = $('#qRow');
-      var petTemplate = $('#qTemplate');
+      var qRow = $('#qRow');
+      var qTemplate = $('#qTemplate');
 
       for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].company);
-        petTemplate.find('.q-rating').text(data[i].rating);
-        petTemplate.find('.q-date').text(data[i].date);
-
-        petsRow.append(petTemplate.html());
+        qTemplate.find('.panel-title').text(data[i].company);
+        qTemplate.find('.q-rating').text(data[i].rating);
+        qTemplate.find('.q-date').text(data[i].date);
+        qTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+        qRow.append(qTemplate.html());
       }
     });
 
