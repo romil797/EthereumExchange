@@ -2,20 +2,49 @@ App = {
   web3Provider: null,
   contracts: {},
 
-  init: function() {
-    // Load questions from JSON.
-    $.getJSON('../questions.json', function(data) {
-      var qRow = $('#qRow');
-      var qTemplate = $('#qTemplate');
+  init: function () {
+      var interviewJustHappened = true;
+      var questionsAsked = [4, 5]; // use Truffle. this should be handed somehow
 
-      for (i = 0; i < data.length; i ++) {
-        qTemplate.find('.panel-title').text(data[i].company);
-        qTemplate.find('.q-rating').text(data[i].rating);
-        qTemplate.find('.q-date').text(data[i].date);
-        qTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-        qRow.append(qTemplate.html());
+      if (interviewJustHappened) {
+          $.getJSON('../questions.json', function (data) {
+              for (i = 0; i < data.length; i++) {
+                  if (questionsAsked.includes(data[i].id)) {
+                      var qsBought = $('#qsBought');
+                      var qBought = $('#qBought');
+                      qBought.find('input').attr('id', 'qId' + data[i].id);
+                      qBought.find('label').text(data[i].question);
+                      qsBought.append(qBought.html());
+                  }
+              }
+          });
       }
-    });
+      else {
+          // Load questions from JSON.
+          $.getJSON('../questions.json', function (data) {
+              var qRow = $('#qRow');
+              var qbRow = $('#qBRow');
+              var qTemplate = $('#qTemplate');
+              var idBought = [1, 3]; // use Truffle, pass account to get all questions bought
+              for (i = 0; i < data.length; i++) {
+                  qTemplate.find('.panel-title').text(data[i].company);
+                  qTemplate.find('.q-rating').text(data[i].rating);
+                  qTemplate.find('.q-date').text(data[i].date);
+                  if (idBought.includes(data[i].id)) {
+                      qTemplate.find('.qspan').css('display', 'block');
+                      qTemplate.find('.q-question').text(data[i].question);
+                      qbRow.append(qTemplate.html());
+                  }
+                  else {
+                      qTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+                      qTemplate.find('.btn-adopt').css('display', 'block');
+                      qRow.append(qTemplate.html());
+                  }
+                  qTemplate.find('.btn-adopt').css('display', 'none');
+                  qTemplate.find('.qspan').css('display', 'none');
+              }
+          });
+      }
 
     return App.initWeb3();
   },
@@ -50,7 +79,8 @@ App = {
   },
 
   bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handlePurchase);
+      $(document).on('click', '.btn-buy', App.handlePurchase);
+      $(document).on('click', '.after-interview', App.handleAfterInterview);
   },
 
   markBought: function(purchasers, account) {
@@ -62,7 +92,7 @@ App = {
           return paymentInstance.getPurchasers.call();
       }).then(function (purchasers) {
           for (i = 0; i < purchasers.length; i++) {
-              if (purchasers[i] !== '0x0000000000000000000000000000000000000000') {
+              if (purchasers[i] !== '0x' && purchasers[i] !== '0x0000000000000000000000000000000000000000') {
                   $('.panel-q').eq(i).find('button').text('Success').attr('disabled', true);
               }
           }
@@ -70,21 +100,31 @@ App = {
           console.log(err.message);
       });
   },
+  handleAfterInterview: function(event) {
+      event.preventDefault();
+      
+      checked = [];
+      $('.seenQs:checked').each(function () {
+          checked.push(parseInt(this.id.substring(3)));
+      });
+      newQs = [];
+      $('.qAdd').each(function () {
+          newQs.push($(this).val());
+      });
+      if (newQs.length + checked.length > 5)
+          alert('Please only enter 5');
+      // Truffle something with checked and newQs !!!
+  },
 
   handlePurchase: function(event) {
     event.preventDefault();
-
     var questionId = parseInt($(event.target).data('id'));
-
     var paymentInstance;
-
     web3.eth.getAccounts(function (error, accounts) {
         if (error) {
             console.log(error);
         }
-
         var account = accounts[0];
-
         App.contracts.QuestionPurchase.deployed().then(function (instance) {
             paymentInstance = instance;
 

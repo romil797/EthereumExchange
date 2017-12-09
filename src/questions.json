@@ -32,7 +32,7 @@
     "company": "Bloomberg",
     "rating": "4.0",
     "date": "9/15/2017",
-    "question": "Sort a linked list."
+    "question": "Reverse a linked list."
   },
   {
     "id": 5,
@@ -43,10 +43,10 @@
   },
   {
     "id": 6,
-    "company": "Facebook",
+    "company": "Google",
     "rating": "4.0",
     "date": "9/15/2017",
-    "question": "Sort a linked list."
+    "question": "Implement merge sort."
   },
   {
     "id": 7,
