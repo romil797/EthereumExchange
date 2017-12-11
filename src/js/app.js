@@ -37,11 +37,11 @@ App = {
                       qbRow.append(qTemplate.html());
                   }
                   else {
-                      qTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-                      qTemplate.find('.btn-adopt').css('display', 'block');
+                      qTemplate.find('.btn-buy').attr('data-id', data[i].id);
+                      qTemplate.find('.btn-buy').css('display', 'block');
                       qRow.append(qTemplate.html());
                   }
-                  qTemplate.find('.btn-adopt').css('display', 'none');
+                  qTemplate.find('.btn-buy').css('display', 'none');
                   qTemplate.find('.qspan').css('display', 'none');
               }
           });
@@ -90,12 +90,12 @@ App = {
       App.contracts.QuestionPurchase.deployed().then(function (instance) {
           paymentInstance = instance;
 
-          return paymentInstance.getPurchasers.call();
-      }).then(function (purchasers) {
-          for (i = 0; i < purchasers.length; i++) {
-              if (purchasers[i] !== '0x' && purchasers[i] !== '0x0000000000000000000000000000000000000000') {
+          return paymentInstance.getQuestionLength.call({ from: account });
+      }).then(function (questionAccessLength) {
+          for (i = 0; i < questionAccessLength; i++) {
+                    //alert(paymentInstance.getQuestionAtIndex(i, {from: account}));
+                    alert(i);
                   $('.panel-q').eq(i).find('button').text('Success').attr('disabled', true);
-              }
           }
       }).catch(function (err) {
           console.log(err.message);

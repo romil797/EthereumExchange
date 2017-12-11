@@ -1,19 +1,32 @@
 pragma solidity ^0.4.4;
 
 contract QuestionPurchase {
-	address[16] public purchasers;
-	// Adopting a pet
-function purchase(uint questionId) public returns (uint) {
-  require(questionId >= 0 && questionId <= 15);
 
-  purchasers[questionId] = msg.sender;
+    struct questionBundle{
+        uint[] questionAccess;
+    }
+
+    mapping(address => questionBundle) questionList;
+
+
+
+function purchase(uint questionId) public returns (uint) {
+
+  questionList[msg.sender].questionAccess.push(questionId);
 
   return questionId;
 }
 
-// Retrieving the adopters
-function getPurchasers() public returns (address[16]) {
-  return purchasers;
+
+//distributes token
+//Retrieving the adopters
+    //broken
+function getQuestionLength() constant returns (uint) {
+  return questionList[msg.sender].questionAccess.length;
+}
+
+function getQuestionAtIndex(uint index) constant returns (uint){
+    return questionList[msg.sender].questionAccess[index];
 }
 
 
