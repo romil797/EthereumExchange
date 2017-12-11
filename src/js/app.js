@@ -3,7 +3,7 @@ App = {
   contracts: {},
 
   init: function () {
-      var interviewJustHappened = true;
+      var interviewJustHappened = false;
       var questionsAsked = [4, 5]; // use Truffle. this should be handed somehow
 
       if (interviewJustHappened) {
