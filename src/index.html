@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div id="qPrompt" style="display:block;">
+    <div id="qPrompt" style="display:none;">
         <h3>How was your interview with <span id="iCompany">Google</span>?</h3>
         Mark up to 5 questions that you found helpful. Mark a duplicate only once.
         <div id="qsBought">
@@ -75,11 +75,13 @@
           }
       </script>
 
+      <div style="display:none">
+          <span id="qBought">
+              <br /><input type="checkbox" id="qId" class="seenQs" />
+              <label for="qId">Reverse a LinkedList.</label>
+          </span>
+      </div>
     <div id="qTemplate" style="display: none;">
-        <span id="qBought">
-            <br /><input type="checkbox" id="qId" class="seenQs" />
-            <label for="qId">Reverse a LinkedList.</label>
-        </span>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="panel panel-default panel-q">
           <div class="panel-heading">

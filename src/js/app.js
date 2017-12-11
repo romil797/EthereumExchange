@@ -3,7 +3,7 @@ App = {
   contracts: {},
 
   init: function () {
-      var interviewJustHappened = true;
+      var interviewJustHappened = false;
       var questionsAsked = [4, 5]; // use Truffle. this should be handed somehow
 
       if (interviewJustHappened) {
@@ -12,6 +12,7 @@ App = {
                   if (questionsAsked.includes(data[i].id)) {
                       var qsBought = $('#qsBought');
                       var qBought = $('#qBought');
+                      $('#qPrompt').css('display', 'block');
                       qBought.find('input').attr('id', 'qId' + data[i].id);
                       qBought.find('label').text(data[i].question);
                       qsBought.append(qBought.html());
