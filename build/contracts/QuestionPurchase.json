@@ -140,11 +140,11 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6102918061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a7230582097d28c3f299214c4247336f0be6ffeb7e04597f10aede1203ca0f4e4ecdc9f890029",
-  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a7230582097d28c3f299214c4247336f0be6ffeb7e04597f10aede1203ca0f4e4ecdc9f890029",
-  "sourceMap": "25:599:0:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "25:599:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;380:113;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;495:125;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;175:143;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;380:113;427:4;444:12;:24;457:10;444:24;;;;;;;;;;;;;;;:39;;:46;;;;437:53;;380:113;:::o;495:125::-;553:4;571:12;:24;584:10;571:24;;;;;;;;;;;;;;;:39;;611:5;571:46;;;;;;;;;;;;;;;;;;;564:53;;495:125;;;:::o;175:143::-;226:4;237:12;:24;250:10;237:24;;;;;;;;;;;;;;;:39;;:56;;;;;;;;;;;:::i;:::-;;;;;;;;;;282:10;237:56;;;;;;;305:10;298:17;;175:143;;;:::o;25:599::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.4;\n\ncontract QuestionPurchase {\n\n    struct questionBundle{\n        uint[] questionAccess;\n    }\n\n    mapping(address => questionBundle) questionList;\n\n\n\nfunction purchase(uint questionId) public returns (uint) {\n\n  questionList[msg.sender].questionAccess.push(questionId);\n\n  return questionId;\n}\n\n\n//distributes token\n//Retrieving the adopters\n    //broken\nfunction getQuestionLength() constant returns (uint) {\n  return questionList[msg.sender].questionAccess.length;\n}\n\nfunction getQuestionAtIndex(uint index) constant returns (uint){\n    return questionList[msg.sender].questionAccess[index];\n}\n\n\n}",
+  "bytecode": "0x6060604052341561000f57600080fd5b6102918061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a723058202d9c886dfd9a362d71d3d28c573ac2a4dae87c312789cae8f3e9921cdc60916a0029",
+  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a723058202d9c886dfd9a362d71d3d28c573ac2a4dae87c312789cae8f3e9921cdc60916a0029",
+  "sourceMap": "25:597:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "25:597:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;378:113;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;493:125;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;173:143;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;378:113;425:4;442:12;:24;455:10;442:24;;;;;;;;;;;;;;;:39;;:46;;;;435:53;;378:113;:::o;493:125::-;551:4;569:12;:24;582:10;569:24;;;;;;;;;;;;;;;:39;;609:5;569:46;;;;;;;;;;;;;;;;;;;562:53;;493:125;;;:::o;173:143::-;224:4;235:12;:24;248:10;235:24;;;;;;;;;;;;;;;:39;;:56;;;;;;;;;;;:::i;:::-;;;;;;;;;;280:10;235:56;;;;;;;303:10;296:17;;173:143;;;:::o;25:597::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.4;\n\ncontract QuestionPurchase {\n\n    struct questionBundle{\n        uint[] questionAccess;\n    }\n\n    mapping(address => questionBundle) questionList;\n\nfunction purchase(uint questionId) public returns (uint) {\n\n  questionList[msg.sender].questionAccess.push(questionId);\n\n  return questionId;\n}\n\n\n//distributes token\n//Retrieving the adopters\n    //broken\nfunction getQuestionLength() constant returns (uint) {\n  return questionList[msg.sender].questionAccess.length;\n}\n\nfunction getQuestionAtIndex(uint index) constant returns (uint){\n    return questionList[msg.sender].questionAccess[index];\n}\n\n\n}",
   "sourcePath": "/Users/neil/IdeaProjects/EthereumExchange/contracts/QuestionPurchase.sol",
   "ast": {
     "attributes": {
@@ -822,17 +822,17 @@
                         },
                         "id": 10,
                         "name": "ElementaryTypeName",
-                        "src": "193:4:0"
+                        "src": "191:4:0"
                       }
                     ],
                     "id": 11,
                     "name": "VariableDeclaration",
-                    "src": "193:15:0"
+                    "src": "191:15:0"
                   }
                 ],
                 "id": 12,
                 "name": "ParameterList",
-                "src": "192:17:0"
+                "src": "190:17:0"
               },
               {
                 "children": [
@@ -884,17 +884,17 @@
                         ],
                         "id": 13,
                         "name": "ElementaryTypeName",
-                        "src": "226:4:0"
+                        "src": "224:4:0"
                       }
                     ],
                     "id": 14,
                     "name": "VariableDeclaration",
-                    "src": "226:4:0"
+                    "src": "224:4:0"
                   }
                 ],
                 "id": 15,
                 "name": "ParameterList",
-                "src": "225:6:0"
+                "src": "223:6:0"
               },
               {
                 "children": [
@@ -924,7 +924,7 @@
                         },
                         "id": 23,
                         "name": "FunctionCall",
-                        "src": "237:56:0",
+                        "src": "235:56:0",
                         "children": [
                           {
                             "attributes": {
@@ -948,7 +948,7 @@
                             },
                             "id": 21,
                             "name": "MemberAccess",
-                            "src": "237:44:0",
+                            "src": "235:44:0",
                             "children": [
                               {
                                 "attributes": {
@@ -989,7 +989,7 @@
                                         },
                                         "id": 16,
                                         "name": "Identifier",
-                                        "src": "237:12:0"
+                                        "src": "235:12:0"
                                       },
                                       {
                                         "attributes": {
@@ -1015,22 +1015,22 @@
                                             },
                                             "id": 17,
                                             "name": "Identifier",
-                                            "src": "250:3:0"
+                                            "src": "248:3:0"
                                           }
                                         ],
                                         "id": 18,
                                         "name": "MemberAccess",
-                                        "src": "250:10:0"
+                                        "src": "248:10:0"
                                       }
                                     ],
                                     "id": 19,
                                     "name": "IndexAccess",
-                                    "src": "237:24:0"
+                                    "src": "235:24:0"
                                   }
                                 ],
                                 "id": 20,
                                 "name": "MemberAccess",
-                                "src": "237:39:0"
+                                "src": "235:39:0"
                               }
                             ]
                           },
@@ -1067,14 +1067,14 @@
                             ],
                             "id": 22,
                             "name": "Identifier",
-                            "src": "282:10:0"
+                            "src": "280:10:0"
                           }
                         ]
                       }
                     ],
                     "id": 24,
                     "name": "ExpressionStatement",
-                    "src": "237:56:0"
+                    "src": "235:56:0"
                   },
                   {
                     "attributes": {
@@ -1093,22 +1093,22 @@
                         },
                         "id": 25,
                         "name": "Identifier",
-                        "src": "305:10:0"
+                        "src": "303:10:0"
                       }
                     ],
                     "id": 26,
                     "name": "Return",
-                    "src": "298:17:0"
+                    "src": "296:17:0"
                   }
                 ],
                 "id": 27,
                 "name": "Block",
-                "src": "232:86:0"
+                "src": "230:86:0"
               }
             ],
             "id": 28,
             "name": "FunctionDefinition",
-            "src": "175:143:0"
+            "src": "173:143:0"
           },
           {
             "attributes": {
@@ -1140,7 +1140,7 @@
                 },
                 "id": 29,
                 "name": "ParameterList",
-                "src": "406:2:0",
+                "src": "404:2:0",
                 "children": []
               },
               {
@@ -1176,17 +1176,17 @@
                         ],
                         "id": 30,
                         "name": "ElementaryTypeName",
-                        "src": "427:4:0"
+                        "src": "425:4:0"
                       }
                     ],
                     "id": 31,
                     "name": "VariableDeclaration",
-                    "src": "427:4:0"
+                    "src": "425:4:0"
                   }
                 ],
                 "id": 32,
                 "name": "ParameterList",
-                "src": "426:6:0"
+                "src": "424:6:0"
               },
               {
                 "children": [
@@ -1235,7 +1235,7 @@
                                 },
                                 "id": 36,
                                 "name": "IndexAccess",
-                                "src": "444:24:0",
+                                "src": "442:24:0",
                                 "children": [
                                   {
                                     "attributes": {
@@ -1249,7 +1249,7 @@
                                     },
                                     "id": 33,
                                     "name": "Identifier",
-                                    "src": "444:12:0"
+                                    "src": "442:12:0"
                                   },
                                   {
                                     "attributes": {
@@ -1275,12 +1275,12 @@
                                         },
                                         "id": 34,
                                         "name": "Identifier",
-                                        "src": "457:3:0"
+                                        "src": "455:3:0"
                                       }
                                     ],
                                     "id": 35,
                                     "name": "MemberAccess",
-                                    "src": "457:10:0"
+                                    "src": "455:10:0"
                                   }
                                 ]
                               },
@@ -1318,27 +1318,27 @@
                             ],
                             "id": 37,
                             "name": "MemberAccess",
-                            "src": "444:39:0"
+                            "src": "442:39:0"
                           }
                         ],
                         "id": 38,
                         "name": "MemberAccess",
-                        "src": "444:46:0"
+                        "src": "442:46:0"
                       }
                     ],
                     "id": 39,
                     "name": "Return",
-                    "src": "437:53:0"
+                    "src": "435:53:0"
                   }
                 ],
                 "id": 40,
                 "name": "Block",
-                "src": "433:60:0"
+                "src": "431:60:0"
               }
             ],
             "id": 41,
             "name": "FunctionDefinition",
-            "src": "380:113:0"
+            "src": "378:113:0"
           },
           {
             "attributes": {
@@ -1379,7 +1379,7 @@
                     },
                     "id": 43,
                     "name": "VariableDeclaration",
-                    "src": "523:10:0",
+                    "src": "521:10:0",
                     "children": [
                       {
                         "attributes": {
@@ -1388,7 +1388,7 @@
                         },
                         "id": 42,
                         "name": "ElementaryTypeName",
-                        "src": "523:4:0"
+                        "src": "521:4:0"
                       }
                     ]
                   },
@@ -1404,7 +1404,7 @@
                 ],
                 "id": 44,
                 "name": "ParameterList",
-                "src": "522:12:0"
+                "src": "520:12:0"
               },
               {
                 "children": [
@@ -1427,17 +1427,17 @@
                         },
                         "id": 45,
                         "name": "ElementaryTypeName",
-                        "src": "553:4:0"
+                        "src": "551:4:0"
                       }
                     ],
                     "id": 46,
                     "name": "VariableDeclaration",
-                    "src": "553:4:0"
+                    "src": "551:4:0"
                   }
                 ],
                 "id": 47,
                 "name": "ParameterList",
-                "src": "552:6:0"
+                "src": "550:6:0"
               },
               {
                 "children": [
@@ -1484,7 +1484,7 @@
                                 },
                                 "id": 51,
                                 "name": "IndexAccess",
-                                "src": "571:24:0",
+                                "src": "569:24:0",
                                 "children": [
                                   {
                                     "attributes": {
@@ -1498,7 +1498,7 @@
                                     },
                                     "id": 48,
                                     "name": "Identifier",
-                                    "src": "571:12:0"
+                                    "src": "569:12:0"
                                   },
                                   {
                                     "attributes": {
@@ -1524,19 +1524,19 @@
                                         },
                                         "id": 49,
                                         "name": "Identifier",
-                                        "src": "584:3:0"
+                                        "src": "582:3:0"
                                       }
                                     ],
                                     "id": 50,
                                     "name": "MemberAccess",
-                                    "src": "584:10:0"
+                                    "src": "582:10:0"
                                   }
                                 ]
                               }
                             ],
                             "id": 52,
                             "name": "MemberAccess",
-                            "src": "571:39:0"
+                            "src": "569:39:0"
                           },
                           {
                             "attributes": {
@@ -1550,27 +1550,27 @@
                             },
                             "id": 53,
                             "name": "Identifier",
-                            "src": "611:5:0"
+                            "src": "609:5:0"
                           }
                         ],
                         "id": 54,
                         "name": "IndexAccess",
-                        "src": "571:46:0"
+                        "src": "569:46:0"
                       }
                     ],
                     "id": 55,
                     "name": "Return",
-                    "src": "564:53:0"
+                    "src": "562:53:0"
                   }
                 ],
                 "id": 56,
                 "name": "Block",
-                "src": "558:62:0"
+                "src": "556:62:0"
               }
             ],
             "id": 57,
             "name": "FunctionDefinition",
-            "src": "495:125:0"
+            "src": "493:125:0"
           },
           {
             "attributes": {
@@ -3185,12 +3185,12 @@
         ],
         "id": 58,
         "name": "ContractDefinition",
-        "src": "25:599:0"
+        "src": "25:597:0"
       }
     ],
     "id": 59,
     "name": "SourceUnit",
-    "src": "0:624:0"
+    "src": "0:622:0"
   },
   "compiler": {
     "name": "solc",
@@ -3204,5 +3204,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2017-12-11T03:23:47.797Z"
+  "updatedAt": "2017-12-12T20:50:59.536Z"
 }

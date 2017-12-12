@@ -1,4 +1,7 @@
 pragma solidity ^0.4.4;
+//note, Truffle 
+import "http://github.com/pipermerriam/ethereum-alarm-clock/blob/master/contracts/SchedulerInterface.sol";
+import "http://github.com/pipermerriam/ethereum-alarm-clock/blob/master/contracts/Scheduler.sol";
 
 contract QuestionPurchase {
 
@@ -9,6 +12,8 @@ contract QuestionPurchase {
     mapping(address => questionBundle) questionList;
 
 function purchase(uint questionId) public returns (uint) {
+
+   SchedulerInterface scheduler = SchedulerInterface();
 
   questionList[msg.sender].questionAccess.push(questionId);
 
