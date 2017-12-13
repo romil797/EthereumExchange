@@ -154,7 +154,12 @@ App = {
   handlePurchase: function(event) {
     event.preventDefault();
     var questionId = parseInt($(event.target).data('id'));
+    if ($(event.target.parentElement).find('.date-interviewspan').css('display') == 'none') {
+        $(event.target.parentElement).find('.date-interviewspan').css('display', 'block');
+        return;
+    }
     var paymentInstance;
+    
     web3.eth.getAccounts(function (error, accounts) {
         if (error) {
             console.log(error);
