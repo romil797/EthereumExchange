@@ -92,11 +92,45 @@ App = {
 
           return paymentInstance.getQuestionLength.call({ from: account });
       }).then(function (questionAccessLength) {
+          idBought = [1,3];
+          
           for (i = 0; i < questionAccessLength; i++) {
-                    //alert(paymentInstance.getQuestionAtIndex(i, {from: account}));
-                    alert(i);
-                  $('.panel-q').eq(i).find('button').text('Success').attr('disabled', true);
+              paymentInstance.getQuestionAtIndex(i, { from: account }).then(function (val) {
+                  idBought.push(val['c'][0]);
+                  if (i == questionAccessLength) {
+                      $.getJSON('../questions.json', function (data) {
+                          var qRow = $('#qRow');
+                          var qbRow = $('#qBRow');
+                          qRow.html(''); qbRow.html('');
+                          var qTemplate = $('#qTemplate');
+                          for (i = 0; i < data.length; i++) {
+                              qTemplate.find('.panel-title').text(data[i].company);
+                              qTemplate.find('.q-rating').text(data[i].rating);
+                              qTemplate.find('.q-date').text(data[i].date);
+                              if (idBought.includes(data[i].id)) {
+                                  qTemplate.find('.qspan').css('display', 'block');
+                                  qTemplate.find('.q-question').text(data[i].question);
+                                  qbRow.append(qTemplate.html());
+                              }
+                              else {
+                                  qTemplate.find('.btn-buy').attr('data-id', data[i].id);
+                                  qTemplate.find('.btn-buy').css('display', 'block');
+                                  qRow.append(qTemplate.html());
+                              }
+                              qTemplate.find('.btn-buy').css('display', 'none');
+                              qTemplate.find('.qspan').css('display', 'none');
+                          }
+                      });
+                  }
+
+              });
+              //$('.panel-q').eq(i).find('button').text('Success').attr('disabled', true);
           }
+          
+
+
+
+
       }).catch(function (err) {
           console.log(err.message);
       });

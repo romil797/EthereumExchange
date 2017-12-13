@@ -140,18 +140,18 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6102918061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a723058202d9c886dfd9a362d71d3d28c573ac2a4dae87c312789cae8f3e9921cdc60916a0029",
-  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a723058202d9c886dfd9a362d71d3d28c573ac2a4dae87c312789cae8f3e9921cdc60916a0029",
-  "sourceMap": "25:597:0:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "25:597:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;378:113;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;493:125;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;173:143;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;378:113;425:4;442:12;:24;455:10;442:24;;;;;;;;;;;;;;;:39;;:46;;;;435:53;;378:113;:::o;493:125::-;551:4;569:12;:24;582:10;569:24;;;;;;;;;;;;;;;:39;;609:5;569:46;;;;;;;;;;;;;;;;;;;562:53;;493:125;;;:::o;173:143::-;224:4;235:12;:24;248:10;235:24;;;;;;;;;;;;;;;:39;;:56;;;;;;;;;;;:::i;:::-;;;;;;;;;;280:10;235:56;;;;;;;303:10;296:17;;173:143;;;:::o;25:597::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.4;\n\ncontract QuestionPurchase {\n\n    struct questionBundle{\n        uint[] questionAccess;\n    }\n\n    mapping(address => questionBundle) questionList;\n\nfunction purchase(uint questionId) public returns (uint) {\n\n  questionList[msg.sender].questionAccess.push(questionId);\n\n  return questionId;\n}\n\n\n//distributes token\n//Retrieving the adopters\n    //broken\nfunction getQuestionLength() constant returns (uint) {\n  return questionList[msg.sender].questionAccess.length;\n}\n\nfunction getQuestionAtIndex(uint index) constant returns (uint){\n    return questionList[msg.sender].questionAccess[index];\n}\n\n\n}",
-  "sourcePath": "/Users/neil/IdeaProjects/EthereumExchange/contracts/QuestionPurchase.sol",
+  "bytecode": "0x6060604052341561000f57600080fd5b6102918061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a7230582078b0ce0b0e963f2150ed9c715a7204c56d58ab76a3a1debf7e955d47d3509cc60029",
+  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806319e874b11461005c578063827e30a714610085578063efef39a1146100bc575b600080fd5b341561006757600080fd5b61006f6100f3565b6040518082815260200191505060405180910390f35b341561009057600080fd5b6100a6600480803590602001909190505061013f565b6040518082815260200191505060405180910390f35b34156100c757600080fd5b6100dd60048080359060200190919050506101a2565b6040518082815260200191505060405180910390f35b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180549050905090565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018281548110151561018f57fe5b9060005260206000209001549050919050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000180548060010182816101f79190610214565b916000526020600020900160008490919091505550819050919050565b81548183558181151161023b5781836000526020600020918201910161023a9190610240565b5b505050565b61026291905b8082111561025e576000816000905550600101610246565b5090565b905600a165627a7a7230582078b0ce0b0e963f2150ed9c715a7204c56d58ab76a3a1debf7e955d47d3509cc60029",
+  "sourceMap": "27:625:1:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:625:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;399:115;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;518:127;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;183:148;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;399:115;446:4;464:12;:24;477:10;464:24;;;;;;;;;;;;;;;:39;;:46;;;;457:53;;399:115;:::o;518:127::-;576:4;595:12;:24;608:10;595:24;;;;;;;;;;;;;;;:39;;635:5;595:46;;;;;;;;;;;;;;;;;;;588:53;;518:127;;;:::o;183:148::-;234:4;247:12;:24;260:10;247:24;;;;;;;;;;;;;;;:39;;:56;;;;;;;;;;;:::i;:::-;;;;;;;;;;292:10;247:56;;;;;;;317:10;310:17;;183:148;;;:::o;27:625::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.4;\r\n\r\ncontract QuestionPurchase {\r\n\r\n    struct questionBundle{\r\n        uint[] questionAccess;\r\n    }\r\n\r\n    mapping(address => questionBundle) questionList;\r\n\r\nfunction purchase(uint questionId) public returns (uint) {\r\n\r\n  questionList[msg.sender].questionAccess.push(questionId);\r\n\r\n  return questionId;\r\n}\r\n\r\n\r\n//distributes token\r\n//Retrieving the adopters\r\n    //broken\r\nfunction getQuestionLength() constant returns (uint) {\r\n  return questionList[msg.sender].questionAccess.length;\r\n}\r\n\r\nfunction getQuestionAtIndex(uint index) constant returns (uint){\r\n    return questionList[msg.sender].questionAccess[index];\r\n}\r\n\r\n\r\n}",
+  "sourcePath": "C:\\coding\\cs143\\final\\EthereumExchange\\contracts\\QuestionPurchase.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/neil/IdeaProjects/EthereumExchange/contracts/QuestionPurchase.sol",
+      "absolutePath": "/C/coding/cs143/final/EthereumExchange/contracts/QuestionPurchase.sol",
       "exportedSymbols": {
         "QuestionPurchase": [
-          58
+          115
         ]
       }
     },
@@ -165,9 +165,9 @@
             ".4"
           ]
         },
-        "id": 1,
+        "id": 58,
         "name": "PragmaDirective",
-        "src": "0:23:0"
+        "src": "0:23:1"
       },
       {
         "attributes": {
@@ -181,17 +181,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            58
+            115
           ],
           "name": "QuestionPurchase",
-          "scope": 59
+          "scope": 116
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "questionBundle",
-              "scope": 58,
+              "scope": 115,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256[] storage ref",
@@ -205,7 +205,7 @@
                   "type": "uint256[] storage pointer",
                   "constant": false,
                   "name": "questionAccess",
-                  "scope": 5,
+                  "scope": 62,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "value": null,
@@ -219,18 +219,18 @@
                       "type": "uint256[] storage pointer",
                       "length": null
                     },
-                    "id": 3,
+                    "id": 60,
                     "name": "ArrayTypeName",
-                    "src": "89:6:0",
+                    "src": "94:6:1",
                     "children": [
                       {
                         "attributes": {
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 2,
+                        "id": 59,
                         "name": "ElementaryTypeName",
-                        "src": "89:4:0"
+                        "src": "94:4:1"
                       }
                     ]
                   },
@@ -264,14 +264,14 @@
                     ]
                   }
                 ],
-                "id": 4,
+                "id": 61,
                 "name": "VariableDeclaration",
-                "src": "89:21:0"
+                "src": "94:21:1"
               }
             ],
-            "id": 5,
+            "id": 62,
             "name": "StructDefinition",
-            "src": "58:59:0"
+            "src": "62:61:1"
           },
           {
             "attributes": {
@@ -283,7 +283,7 @@
               ],
               "name": "questionList",
               "payable": false,
-              "scope": 58,
+              "scope": 115,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal",
@@ -317,25 +317,25 @@
                         "src": "107:4:0"
                       }
                     ],
-                    "id": 6,
+                    "id": 63,
                     "name": "ElementaryTypeName",
-                    "src": "131:7:0"
+                    "src": "139:7:1"
                   },
                   {
                     "attributes": {
                       "contractScope": null,
                       "name": "questionBundle",
-                      "referencedDeclaration": 5,
+                      "referencedDeclaration": 62,
                       "type": "struct QuestionPurchase.questionBundle storage pointer"
                     },
-                    "id": 7,
+                    "id": 64,
                     "name": "UserDefinedTypeName",
-                    "src": "142:14:0"
+                    "src": "150:14:1"
                   }
                 ],
-                "id": 8,
+                "id": 65,
                 "name": "Mapping",
-                "src": "123:34:0",
+                "src": "131:34:1",
                 "attributes": {
                   "type": "mapping(address => struct QuestionPurchase.questionBundle storage ref)",
                   "contractScope": null,
@@ -776,9 +776,9 @@
                 "src": "146:61:0"
               }
             ],
-            "id": 9,
+            "id": 66,
             "name": "VariableDeclaration",
-            "src": "123:47:0"
+            "src": "131:47:1"
           },
           {
             "attributes": {
@@ -790,7 +790,7 @@
               ],
               "name": "purchase",
               "payable": false,
-              "scope": 58,
+              "scope": 115,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -807,7 +807,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "questionId",
-                      "scope": 28,
+                      "scope": 85,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -820,19 +820,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 10,
+                        "id": 67,
                         "name": "ElementaryTypeName",
-                        "src": "191:4:0"
+                        "src": "201:4:1"
                       }
                     ],
-                    "id": 11,
+                    "id": 68,
                     "name": "VariableDeclaration",
-                    "src": "191:15:0"
+                    "src": "201:15:1"
                   }
                 ],
-                "id": 12,
+                "id": 69,
                 "name": "ParameterList",
-                "src": "190:17:0"
+                "src": "200:17:1"
               },
               {
                 "children": [
@@ -840,7 +840,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 28,
+                      "scope": 85,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -882,19 +882,19 @@
                             "src": "316:2:0"
                           }
                         ],
-                        "id": 13,
+                        "id": 70,
                         "name": "ElementaryTypeName",
-                        "src": "224:4:0"
+                        "src": "234:4:1"
                       }
                     ],
-                    "id": 14,
+                    "id": 71,
                     "name": "VariableDeclaration",
-                    "src": "224:4:0"
+                    "src": "234:4:1"
                   }
                 ],
-                "id": 15,
+                "id": 72,
                 "name": "ParameterList",
-                "src": "223:6:0"
+                "src": "233:6:1"
               },
               {
                 "children": [
@@ -922,9 +922,9 @@
                           ],
                           "type_conversion": false
                         },
-                        "id": 23,
+                        "id": 80,
                         "name": "FunctionCall",
-                        "src": "235:56:0",
+                        "src": "247:56:1",
                         "children": [
                           {
                             "attributes": {
@@ -946,9 +946,9 @@
                               "lValueRequested": false,
                               "member_name": "push"
                             },
-                            "id": 21,
+                            "id": 78,
                             "name": "MemberAccess",
-                            "src": "235:44:0",
+                            "src": "247:44:1",
                             "children": [
                               {
                                 "attributes": {
@@ -958,7 +958,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "questionAccess",
-                                  "referencedDeclaration": 4,
+                                  "referencedDeclaration": 61,
                                   "type": "uint256[] storage ref"
                                 },
                                 "children": [
@@ -983,13 +983,13 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9,
+                                          "referencedDeclaration": 66,
                                           "type": "mapping(address => struct QuestionPurchase.questionBundle storage ref)",
                                           "value": "questionList"
                                         },
-                                        "id": 16,
+                                        "id": 73,
                                         "name": "Identifier",
-                                        "src": "235:12:0"
+                                        "src": "247:12:1"
                                       },
                                       {
                                         "attributes": {
@@ -1009,28 +1009,28 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 70,
+                                              "referencedDeclaration": 127,
                                               "type": "msg",
                                               "value": "msg"
                                             },
-                                            "id": 17,
+                                            "id": 74,
                                             "name": "Identifier",
-                                            "src": "248:3:0"
+                                            "src": "260:3:1"
                                           }
                                         ],
-                                        "id": 18,
+                                        "id": 75,
                                         "name": "MemberAccess",
-                                        "src": "248:10:0"
+                                        "src": "260:10:1"
                                       }
                                     ],
-                                    "id": 19,
+                                    "id": 76,
                                     "name": "IndexAccess",
-                                    "src": "235:24:0"
+                                    "src": "247:24:1"
                                   }
                                 ],
-                                "id": 20,
+                                "id": 77,
                                 "name": "MemberAccess",
-                                "src": "235:39:0"
+                                "src": "247:39:1"
                               }
                             ]
                           },
@@ -1042,7 +1042,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "sender",
-                              "referencedDeclaration": 11,
+                              "referencedDeclaration": 68,
                               "type": "uint256",
                               "overloadedDeclarations": [
                                 null
@@ -1065,20 +1065,20 @@
                                 "src": "368:3:0"
                               }
                             ],
-                            "id": 22,
+                            "id": 79,
                             "name": "Identifier",
-                            "src": "280:10:0"
+                            "src": "292:10:1"
                           }
                         ]
                       }
                     ],
-                    "id": 24,
+                    "id": 81,
                     "name": "ExpressionStatement",
-                    "src": "235:56:0"
+                    "src": "247:56:1"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 15
+                      "functionReturnParameters": 72
                     },
                     "children": [
                       {
@@ -1087,34 +1087,34 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 11,
+                          "referencedDeclaration": 68,
                           "type": "uint256",
                           "value": "questionId"
                         },
-                        "id": 25,
+                        "id": 82,
                         "name": "Identifier",
-                        "src": "303:10:0"
+                        "src": "317:10:1"
                       }
                     ],
-                    "id": 26,
+                    "id": 83,
                     "name": "Return",
-                    "src": "296:17:0"
+                    "src": "310:17:1"
                   }
                 ],
-                "id": 27,
+                "id": 84,
                 "name": "Block",
-                "src": "230:86:0"
+                "src": "240:91:1"
               }
             ],
-            "id": 28,
+            "id": 85,
             "name": "FunctionDefinition",
-            "src": "173:143:0"
+            "src": "183:148:1"
           },
           {
             "attributes": {
               "constant": true,
               "name": "getQuestionLength",
-              "scope": 58,
+              "scope": 115,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -1138,9 +1138,9 @@
                     null
                   ]
                 },
-                "id": 29,
+                "id": 86,
                 "name": "ParameterList",
-                "src": "404:2:0",
+                "src": "425:2:1",
                 "children": []
               },
               {
@@ -1149,7 +1149,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 41,
+                      "scope": 98,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1174,25 +1174,25 @@
                             "src": "417:4:0"
                           }
                         ],
-                        "id": 30,
+                        "id": 87,
                         "name": "ElementaryTypeName",
-                        "src": "425:4:0"
+                        "src": "446:4:1"
                       }
                     ],
-                    "id": 31,
+                    "id": 88,
                     "name": "VariableDeclaration",
-                    "src": "425:4:0"
+                    "src": "446:4:1"
                   }
                 ],
-                "id": 32,
+                "id": 89,
                 "name": "ParameterList",
-                "src": "424:6:0"
+                "src": "445:6:1"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 32
+                      "functionReturnParameters": 89
                     },
                     "children": [
                       {
@@ -1216,7 +1216,7 @@
                               "lValueRequested": false,
                               "type": "uint256[] storage ref",
                               "member_name": "questionAccess",
-                              "referencedDeclaration": 4
+                              "referencedDeclaration": 61
                             },
                             "children": [
                               {
@@ -1233,9 +1233,9 @@
                                   "isPure": false,
                                   "lValueRequested": false
                                 },
-                                "id": 36,
+                                "id": 93,
                                 "name": "IndexAccess",
-                                "src": "442:24:0",
+                                "src": "464:24:1",
                                 "children": [
                                   {
                                     "attributes": {
@@ -1243,13 +1243,13 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9,
+                                      "referencedDeclaration": 66,
                                       "type": "mapping(address => struct QuestionPurchase.questionBundle storage ref)",
                                       "value": "questionList"
                                     },
-                                    "id": 33,
+                                    "id": 90,
                                     "name": "Identifier",
-                                    "src": "442:12:0"
+                                    "src": "464:12:1"
                                   },
                                   {
                                     "attributes": {
@@ -1269,18 +1269,18 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 70,
+                                          "referencedDeclaration": 127,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 34,
+                                        "id": 91,
                                         "name": "Identifier",
-                                        "src": "455:3:0"
+                                        "src": "477:3:1"
                                       }
                                     ],
-                                    "id": 35,
+                                    "id": 92,
                                     "name": "MemberAccess",
-                                    "src": "455:10:0"
+                                    "src": "477:10:1"
                                   }
                                 ]
                               },
@@ -1316,35 +1316,35 @@
                                 "src": "451:10:0"
                               }
                             ],
-                            "id": 37,
+                            "id": 94,
                             "name": "MemberAccess",
-                            "src": "442:39:0"
+                            "src": "464:39:1"
                           }
                         ],
-                        "id": 38,
+                        "id": 95,
                         "name": "MemberAccess",
-                        "src": "442:46:0"
+                        "src": "464:46:1"
                       }
                     ],
-                    "id": 39,
+                    "id": 96,
                     "name": "Return",
-                    "src": "435:53:0"
+                    "src": "457:53:1"
                   }
                 ],
-                "id": 40,
+                "id": 97,
                 "name": "Block",
-                "src": "431:60:0"
+                "src": "452:62:1"
               }
             ],
-            "id": 41,
+            "id": 98,
             "name": "FunctionDefinition",
-            "src": "378:113:0"
+            "src": "399:115:1"
           },
           {
             "attributes": {
               "constant": true,
               "name": "getQuestionAtIndex",
-              "scope": 58,
+              "scope": 115,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => uint256)",
@@ -1371,24 +1371,24 @@
                       "name": "index",
                       "type": "uint256",
                       "constant": false,
-                      "scope": 57,
+                      "scope": 114,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "value": null,
                       "visibility": "internal"
                     },
-                    "id": 43,
+                    "id": 100,
                     "name": "VariableDeclaration",
-                    "src": "521:10:0",
+                    "src": "546:10:1",
                     "children": [
                       {
                         "attributes": {
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 42,
+                        "id": 99,
                         "name": "ElementaryTypeName",
-                        "src": "521:4:0"
+                        "src": "546:4:1"
                       }
                     ]
                   },
@@ -1402,9 +1402,9 @@
                     "src": "384:4:0"
                   }
                 ],
-                "id": 44,
+                "id": 101,
                 "name": "ParameterList",
-                "src": "520:12:0"
+                "src": "545:12:1"
               },
               {
                 "children": [
@@ -1412,7 +1412,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 57,
+                      "scope": 114,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1425,25 +1425,25 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 45,
+                        "id": 102,
                         "name": "ElementaryTypeName",
-                        "src": "551:4:0"
+                        "src": "576:4:1"
                       }
                     ],
-                    "id": 46,
+                    "id": 103,
                     "name": "VariableDeclaration",
-                    "src": "551:4:0"
+                    "src": "576:4:1"
                   }
                 ],
-                "id": 47,
+                "id": 104,
                 "name": "ParameterList",
-                "src": "550:6:0"
+                "src": "575:6:1"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 47
+                      "functionReturnParameters": 104
                     },
                     "children": [
                       {
@@ -1464,7 +1464,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "questionAccess",
-                              "referencedDeclaration": 4,
+                              "referencedDeclaration": 61,
                               "type": "uint256[] storage ref"
                             },
                             "children": [
@@ -1482,9 +1482,9 @@
                                   "isPure": false,
                                   "lValueRequested": false
                                 },
-                                "id": 51,
+                                "id": 108,
                                 "name": "IndexAccess",
-                                "src": "569:24:0",
+                                "src": "595:24:1",
                                 "children": [
                                   {
                                     "attributes": {
@@ -1492,13 +1492,13 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9,
+                                      "referencedDeclaration": 66,
                                       "type": "mapping(address => struct QuestionPurchase.questionBundle storage ref)",
                                       "value": "questionList"
                                     },
-                                    "id": 48,
+                                    "id": 105,
                                     "name": "Identifier",
-                                    "src": "569:12:0"
+                                    "src": "595:12:1"
                                   },
                                   {
                                     "attributes": {
@@ -1518,25 +1518,25 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 70,
+                                          "referencedDeclaration": 127,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 49,
+                                        "id": 106,
                                         "name": "Identifier",
-                                        "src": "582:3:0"
+                                        "src": "608:3:1"
                                       }
                                     ],
-                                    "id": 50,
+                                    "id": 107,
                                     "name": "MemberAccess",
-                                    "src": "582:10:0"
+                                    "src": "608:10:1"
                                   }
                                 ]
                               }
                             ],
-                            "id": 52,
+                            "id": 109,
                             "name": "MemberAccess",
-                            "src": "569:39:0"
+                            "src": "595:39:1"
                           },
                           {
                             "attributes": {
@@ -1544,33 +1544,33 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 43,
+                              "referencedDeclaration": 100,
                               "type": "uint256",
                               "value": "index"
                             },
-                            "id": 53,
+                            "id": 110,
                             "name": "Identifier",
-                            "src": "609:5:0"
+                            "src": "635:5:1"
                           }
                         ],
-                        "id": 54,
+                        "id": 111,
                         "name": "IndexAccess",
-                        "src": "569:46:0"
+                        "src": "595:46:1"
                       }
                     ],
-                    "id": 55,
+                    "id": 112,
                     "name": "Return",
-                    "src": "562:53:0"
+                    "src": "588:53:1"
                   }
                 ],
-                "id": 56,
+                "id": 113,
                 "name": "Block",
-                "src": "556:62:0"
+                "src": "581:64:1"
               }
             ],
-            "id": 57,
+            "id": 114,
             "name": "FunctionDefinition",
-            "src": "493:125:0"
+            "src": "518:127:1"
           },
           {
             "attributes": {
@@ -3183,14 +3183,14 @@
             "src": "766:189:0"
           }
         ],
-        "id": 58,
+        "id": 115,
         "name": "ContractDefinition",
-        "src": "25:597:0"
+        "src": "27:625:1"
       }
     ],
-    "id": 59,
+    "id": 116,
     "name": "SourceUnit",
-    "src": "0:622:0"
+    "src": "0:652:1"
   },
   "compiler": {
     "name": "solc",
@@ -3204,5 +3204,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2017-12-12T20:50:59.536Z"
+  "updatedAt": "2017-12-13T03:04:59.225Z"
 }
