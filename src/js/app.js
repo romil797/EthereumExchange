@@ -1,3 +1,4 @@
+var questionId;
 App = {
   web3Provider: null,
   contracts: {},
@@ -26,7 +27,7 @@ App = {
               var qRow = $('#qRow');
               var qbRow = $('#qBRow');
               var qTemplate = $('#qTemplate');
-              var idBought = [1, 3]; // use Truffle, pass account to get all questions bought
+              var idBought = []; // use Truffle, pass account to get all questions bought
               for (i = 0; i < data.length; i++) {
                   qTemplate.find('.panel-title').text(data[i].company);
                   qTemplate.find('.q-rating').text(data[i].rating);
@@ -92,19 +93,22 @@ App = {
 
           return paymentInstance.getQuestionLength.call({ from: account });
       }).then(function (questionAccessLength) {
-          idBought = [1,3];
+          idBought = [];
           
           for (i = 0; i < questionAccessLength; i++) {
               paymentInstance.getQuestionAtIndex(i, { from: account }).then(function (val) {
                   idBought.push(val['c'][0]);
                   if (i == questionAccessLength) {
                       $.getJSON('../questions.json', function (data) {
+                          var colors = ["#FF9999", "#F5FFFF", "#99FF99", "#9999FF", "#F5F5F5", "#FFF5FF"];
+                          idBought.push(questionId);
                           var qRow = $('#qRow');
                           var qbRow = $('#qBRow');
                           qRow.html(''); qbRow.html('');
                           var qTemplate = $('#qTemplate');
                           for (i = 0; i < data.length; i++) {
                               qTemplate.find('.panel-title').text(data[i].company);
+                              qTemplate.find('.panel-heading').css('background-color', colors[Math.round((data[i].company.charCodeAt(0)-65.0)/(90.0-65.0)*6.0)])
                               qTemplate.find('.q-rating').text(data[i].rating);
                               qTemplate.find('.q-date').text(data[i].date);
                               if (idBought.includes(data[i].id)) {
@@ -153,7 +157,7 @@ App = {
 
   handlePurchase: function(event) {
     event.preventDefault();
-    var questionId = parseInt($(event.target).data('id'));
+    questionId = parseInt($(event.target).data('id'));
     if ($(event.target.parentElement).find('.date-interviewspan').css('display') == 'none') {
         $(event.target.parentElement).find('.date-interviewspan').css('display', 'block');
         return;
