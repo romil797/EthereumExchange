@@ -15,6 +15,24 @@ function purchase(uint questionId) public returns (uint) {
 
    SchedulerInterface scheduler = SchedulerInterface();
 
+    uint lockedUntil;
+    address recipient;
+    function DelayedPayment(address _recipient, uint date){
+        lockedUntil = block.timestamp() + date;
+        recipient = _recipient;
+
+    uint[3] memory uintArgs = [
+    20000,
+    0,
+    lockedUntil,
+    ];
+    schedule.scheduleTransaction.value(2 ether)(
+        address(this),
+        "",
+        255,
+        uintArgs)
+    }
+
   questionList[msg.sender].questionAccess.push(questionId);
 
   return questionId;
