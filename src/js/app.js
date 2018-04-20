@@ -28,6 +28,7 @@ App = {
               var qbRow = $('#qBRow');
               var qTemplate = $('#qTemplate');
               var idBought = []; // use Truffle, pass account to get all questions bought
+              var colors = ["#FF9999", "#F5FFFF", "#99FF99", "#9999FF", "#F5F5F5", "#FFF5FF"];
               for (i = 0; i < data.length; i++) {
                   qTemplate.find('.panel-title').text(data[i].company);
                   qTemplate.find('.q-rating').text(data[i].rating);
@@ -42,6 +43,7 @@ App = {
                       qTemplate.find('.btn-buy').css('display', 'block');
                       qRow.append(qTemplate.html());
                   }
+                  qTemplate.find('.panel-heading').css('background-color', colors[Math.round((data[i].company.charCodeAt(0) - 65.0) / (90.0 - 65.0) * 6.0)])
                   qTemplate.find('.btn-buy').css('display', 'none');
                   qTemplate.find('.qspan').css('display', 'none');
               }
@@ -73,7 +75,7 @@ App = {
           // Set the provider for our contract
           App.contracts.QuestionPurchase.setProvider(App.web3Provider);
 
-          // Use our contract to retrieve and mark the adopted pets
+          // Use our contract to retrieve and mark the question
           return App.markBought();
       });
 
@@ -90,44 +92,60 @@ App = {
 
       App.contracts.QuestionPurchase.deployed().then(function (instance) {
           paymentInstance = instance;
-
           return paymentInstance.getQuestionLength.call({ from: account });
       }).then(function (questionAccessLength) {
           idBought = [];
-          
+          questionsAsked = [];
+          questionAccessLength = questionAccessLength['c'][0];
           for (i = 0; i < questionAccessLength; i++) {
               paymentInstance.getQuestionAtIndex(i, { from: account }).then(function (val) {
                   idBought.push(val['c'][0]);
+                  //if (val[1]['c'][0] > Math.round((new Date()).getTime() / 1000)) {
+                  //    questionsAsked.push(val['c'][0])
+                  //}
                   if (i == questionAccessLength) {
                       $.getJSON('../questions.json', function (data) {
                           var colors = ["#FF9999", "#F5FFFF", "#99FF99", "#9999FF", "#F5F5F5", "#FFF5FF"];
-                          idBought.push(questionId);
+                          //idBought.push(questionId);
                           var qRow = $('#qRow');
                           var qbRow = $('#qBRow');
                           qRow.html(''); qbRow.html('');
                           var qTemplate = $('#qTemplate');
-                          for (i = 0; i < data.length; i++) {
-                              qTemplate.find('.panel-title').text(data[i].company);
-                              qTemplate.find('.panel-heading').css('background-color', colors[Math.round((data[i].company.charCodeAt(0)-65.0)/(90.0-65.0)*6.0)])
-                              qTemplate.find('.q-rating').text(data[i].rating);
-                              qTemplate.find('.q-date').text(data[i].date);
-                              if (idBought.includes(data[i].id)) {
+                          for (j = 0; j < data.length; j++) {
+                              qTemplate.find('.panel-title').text(data[j].company);
+                              qTemplate.find('.panel-heading').css('background-color', colors[Math.round((data[j].company.charCodeAt(0) - 65.0) / (90.0 - 65.0) * 6.0)])
+                              qTemplate.find('.q-rating').text(data[j].rating);
+                              qTemplate.find('.q-date').text(data[j].date);
+                              if (idBought.includes(data[j].id)) {
                                   qTemplate.find('.qspan').css('display', 'block');
-                                  qTemplate.find('.q-question').text(data[i].question);
+                                  qTemplate.find('.q-question').text(data[j].question);
                                   qbRow.append(qTemplate.html());
                               }
                               else {
-                                  qTemplate.find('.btn-buy').attr('data-id', data[i].id);
+                                  qTemplate.find('.btn-buy').attr('data-id', data[j].id);
                                   qTemplate.find('.btn-buy').css('display', 'block');
                                   qRow.append(qTemplate.html());
                               }
                               qTemplate.find('.btn-buy').css('display', 'none');
                               qTemplate.find('.qspan').css('display', 'none');
                           }
+
+                          for (j = 0; j < data.length; j++) {
+                              if (questionsAsked.includes(data[j].id)) {
+                                  var qsBought = $('#qsBought');
+                                  var qBought = $('#qBought');
+                                  $('#qPrompt').css('display', 'block');
+                                  qBought.find('input').attr('id', 'qId' + data[j].id);
+                                  qBought.find('label').text(data[j].question);
+                                  qsBought.append(qBought.html());
+                              }
+                          }
                       });
                   }
 
               });
+
+              
               //$('.panel-q').eq(i).find('button').text('Success').attr('disabled', true);
           }
           
@@ -173,7 +191,8 @@ App = {
             paymentInstance = instance;
 
             // Execute adopt as a transaction by sending account
-            return paymentInstance.purchase(questionId, { from: account });
+            qDate = parseInt(new Date($(event.target.parentElement).find('.date-interview')[0].value).getTime() / 1000);
+            return paymentInstance.purchase(questionId, qDate, { from: account });
         }).then(function (result) {
             return App.markBought();
         }).catch(function (err) {
