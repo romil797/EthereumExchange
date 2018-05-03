@@ -4,24 +4,7 @@ App = {
   contracts: {},
 
   init: function () {
-      var interviewJustHappened = false;
-      var questionsAsked = [4, 5]; // use Truffle. this should be handed somehow
 
-      if (interviewJustHappened) {
-          $.getJSON('../questions.json', function (data) {
-              for (i = 0; i < data.length; i++) {
-                  if (questionsAsked.includes(data[i].id)) {
-                      var qsBought = $('#qsBought');
-                      var qBought = $('#qBought');
-                      $('#qPrompt').css('display', 'block');
-                      qBought.find('input').attr('id', 'qId' + data[i].id);
-                      qBought.find('label').text(data[i].question);
-                      qsBought.append(qBought.html());
-                  }
-              }
-          });
-      }
-      else {
           // Load questions from JSON.
           $.getJSON('../questions.json', function (data) {
               var qRow = $('#qRow');
@@ -48,7 +31,7 @@ App = {
                   qTemplate.find('.qspan').css('display', 'none');
               }
           });
-      }
+      
 
     return App.initWeb3();
   },
@@ -95,14 +78,28 @@ App = {
           return paymentInstance.getQuestionLength.call({ from: account });
       }).then(function (questionAccessLength) {
           idBought = [];
+          timesBought = []
           questionsAsked = [];
           questionAccessLength = questionAccessLength['c'][0];
           for (i = 0; i < questionAccessLength; i++) {
               paymentInstance.getQuestionAtIndex(i, { from: account }).then(function (val) {
-                  idBought.push(val['c'][0]);
-                  //if (val[1]['c'][0] > Math.round((new Date()).getTime() / 1000)) {
-                  //    questionsAsked.push(val['c'][0])
-                  //}
+                  idBought.push(val[0]['c'][0]);
+                  timesBought.push(val[1]['c'][0]);
+                  if (timesBought.push(val[1]['c'][0]) < Math.round((new Date()).getTime() / 1000)) {
+                      $.getJSON('../questions.json', function (data) {
+                          for (j = 0; j < data.length; j++) {
+                              if (idBought.includes(data[j].id)) {
+                                  var qsBought = $('#qsBought');
+                                  var qBought = $('#qBought');
+                                  $('#qPrompt').css('display', 'block');
+                                  qBought.find('input').attr('id', 'qId' + data[j].id);
+                                  qBought.find('label').text(data[j].question);
+                                  qsBought.append(qBought.html());
+                              }
+                          }
+                      });
+                  }
+
                   if (i == questionAccessLength) {
                       $.getJSON('../questions.json', function (data) {
                           var colors = ["#FF9999", "#F5FFFF", "#99FF99", "#9999FF", "#F5F5F5", "#FFF5FF"];
@@ -141,6 +138,9 @@ App = {
                               }
                           }
                       });
+
+
+
                   }
 
               });
@@ -168,9 +168,26 @@ App = {
       $('.qAdd').each(function () {
           newQs.push($(this).val());
       });
-      if (newQs.length + checked.length > 5)
-          alert('Please only enter 5');
-      // Truffle something with checked and newQs !!!
+      if ($('.seenQs').length/2 > $('.seenQs:checked').length + newQs.length)
+      {
+          return 0; // not enough questions
+      }
+      web3.eth.getAccounts(function (error, accounts) {
+          if (error) {
+              console.log(error);
+          }
+          var account = accounts[0];
+          App.contracts.QuestionPurchase.deployed().then(function (instance) {
+              paymentInstance = instance;
+
+              return paymentInstance.reviewQuestions(checked, { from: account });
+          }).then(function (result) {
+              return App.markBought();
+          }).catch(function (err) {
+              console.log(err.message);
+          });
+      });
+
   },
 
   handlePurchase: function(event) {
