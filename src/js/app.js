@@ -1,4 +1,7 @@
 var questionId;
+
+
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -68,6 +71,7 @@ App = {
   bindEvents: function() {
       $(document).on('click', '.btn-buy', App.handlePurchase);
       $(document).on('click', '.after-interview', App.handleAfterInterview);
+      $(document).on('click', '#addQ', App.handleAddQuestion);
   },
 
   markBought: function(purchasers, account) {
@@ -190,6 +194,17 @@ App = {
 
   },
 
+  handleAddQuestion: function (event) {
+    event.preventDefault();
+    var qRow = $('#qRow');
+    var qTemplate = $('#qTemplate');
+    qTemplate.find('.panel-title').text($('#acompany')[0].value);
+    qTemplate.find('.q-rating').text("4.0");
+    qTemplate.find('.q-date').text($('#adate')[0].value);
+    qTemplate.find('.qspan').css('display', 'block');
+    qTemplate.find('.q-question').text($('#aquestion')[0].value);
+    qRow.append(qTemplate.html());
+  },
   handlePurchase: function(event) {
     event.preventDefault();
     questionId = parseInt($(event.target).data('id'));
