@@ -89,7 +89,7 @@ App = {
               paymentInstance.getQuestionAtIndex(i, { from: account }).then(function (val) {
                   idBought.push(val[0]['c'][0]);
                   timesBought.push(val[1]['c'][0]);
-                  if (timesBought.push(val[1]['c'][0]) < Math.round((new Date()).getTime() / 1000)) {
+                  if (val[1]['c'][0] < Math.round((new Date()).getTime() / 1000)) {
                       $.getJSON('../questions.json', function (data) {
                           for (j = 0; j < data.length; j++) {
                               if (idBought.includes(data[j].id)) {
